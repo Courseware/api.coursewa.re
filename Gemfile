@@ -30,7 +30,6 @@ group :development, :test do
   gem 'fabrication'
   gem 'guard-rspec'
   gem 'rb-inotify'
-  gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
 end

@@ -39,8 +39,6 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (2.1.4)
-    bourne (1.2.1)
-      mocha (= 0.12.7)
     builder (3.0.4)
     cancan (1.6.9)
     cane (2.5.2)
@@ -93,14 +91,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.21)
     mina (0.2.1)
       open4
       rake
-    mocha (0.12.7)
-      metaclass (~> 0.0.1)
     multi_json (1.7.0)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
@@ -179,9 +174,6 @@ GEM
       rspec-mocks (~> 2.12.0)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-    shoulda-matchers (1.5.0)
-      activesupport (>= 3.0.0)
-      bourne (~> 1.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -230,7 +222,6 @@ DEPENDENCIES
   rails-api
   rb-inotify
   rspec-rails (= 2.12.0)
-  shoulda-matchers
   simplecov
   sqlite3
   yard
