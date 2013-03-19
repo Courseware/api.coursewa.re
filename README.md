@@ -18,3 +18,7 @@ Please run `bundle exec rake routes` in order to see the available endpoints.
 # Testing
 
 Run `bundle exec rake` to run tests.
+
+# Database
+
+A note on migrations. Ideally, the non API application should handle these!
