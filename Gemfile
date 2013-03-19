@@ -5,6 +5,7 @@ gem 'rails-api'
 gem 'actionmailer'
 gem 'coursewareable', :git => 'https://5a46b48f3664e53f78b41d5cdbfe3b31a2d82b4d:x-oauth-basic@github.com/stas/coursewareable.git'
 gem 'delayed_job_active_record'
+gem 'doorkeeper'
 
 # Speedup a bit things
 gem 'multi_json'
