@@ -6,11 +6,12 @@ Coursewareable::Engine.routes.draw do
 
   scope :module => :api do
     namespace :v1 do
-      resource :homes, :only => :show
+      resources :users, :only => [] do
+        get :me, :on => :collection
+      end
     end
   end
 
-  root :to => 'api/v1/homes#show'
 end
 
 CoursewareAPI::Application.routes.draw do
