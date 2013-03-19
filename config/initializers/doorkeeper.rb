@@ -11,6 +11,11 @@ Doorkeeper.configure do
     current_user || redirect_to('/')
   end
 
+  # Handles resource owner authentication using credentials
+  resource_owner_from_credentials do |routes|
+    Coursewareable::User.authenticate(params[:username], params[:password])
+  end
+
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
   # admin_authenticator do
   #   # Put your admin authentication logic here.
