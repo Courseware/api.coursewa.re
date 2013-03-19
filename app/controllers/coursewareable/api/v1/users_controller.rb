@@ -1,4 +1,5 @@
 module Coursewareable::Api::V1
+  # [Coursewareable::User] API controller
   class UsersController < ApplicationController
 
     # Ask for an oAuth token first
