@@ -1,6 +1,6 @@
 # Dummy user emails handler class (sends this to dalay_job)
 class UserMailer < ActionMailer::Base
-  default from: Courseware.config.default_email_address
+  default from: ::CoursewareAPI.config.default_email_address
 
   # Sends an activation email to the user
   #

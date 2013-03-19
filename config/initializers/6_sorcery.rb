@@ -5,6 +5,7 @@
 # :reset_password, :session_timeout, :brute_force_protection,
 # :activity_logging, :external
 Rails.application.config.sorcery.submodules = [
+  :reset_password,
   :user_activation,
   :activity_logging,
   :brute_force_protection,
