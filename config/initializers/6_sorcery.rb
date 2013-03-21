@@ -5,6 +5,7 @@
 # :reset_password, :session_timeout, :brute_force_protection,
 # :activity_logging, :external
 Rails.application.config.sorcery.submodules = [
+  :external,
   :reset_password,
   :user_activation,
   :activity_logging,
@@ -81,6 +82,7 @@ Rails.application.config.sorcery.configure do |config|
   # Default: `[]`
   #
   # config.external_providers =
+  config.external_providers = [:facebook]
 
 
   # You can change it by your local ca_file.
@@ -105,6 +107,16 @@ Rails.application.config.sorcery.configure do |config|
   # config.facebook.callback_url =
   #   "http://0.0.0.0:3000/oauth/callback?provider=facebook"
   # config.facebook.user_info_mapping = {:email => "name"}
+  #
+  config.facebook.key = '34cebc81c08a521bc66e212f947d73ec'
+  config.facebook.secret = '5b458d179f61d4f036ee66a497ffbcd0'
+  config.facebook.callback_url = '%s://%s%s/oauth/callback?provider=facebook' % [
+    (Rails.application.config.force_ssl ? 'https' : 'http'),
+    (Rails.env.production? ? CoursewareAPI.config.domain_name : '0.0.0.0'),
+    (':3000' unless Rails.env.production?)
+  ]
+  config.facebook.user_info_mapping = {:email => 'name'}
+  config.facebook.access_permissions = ['email']
   #
   # config.github.key = ""
   # config.github.secret = ""
@@ -408,6 +420,7 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `nil`
     #
     # user.authentications_class =
+    user.authentications_class = Coursewareable::Authentication
 
 
     # User's identifier in authentications class.
