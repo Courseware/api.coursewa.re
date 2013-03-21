@@ -1,7 +1,6 @@
 module Coursewareable
   # OAuth controller to handle external authentications
-  class OauthsController < ActionController::Base
-    include Sorcery::Controller
+  class OauthsController < ::ApplicationController
 
     # Sends the user on a trip to the provider,
     # and after authorizing there back to the callback url.
