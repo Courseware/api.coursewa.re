@@ -9,7 +9,7 @@ describe Coursewareable::Api::V1::ClassroomsController do
 
     it 'for show' do
       get('/v1/classrooms/1').should(
-        route_to('coursewareable/api/v1/classrooms#show', :id => 1))
+        route_to('coursewareable/api/v1/classrooms#show', :id => "1"))
     end
 
     it 'for collaborators' do

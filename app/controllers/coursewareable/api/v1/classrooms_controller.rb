@@ -14,8 +14,9 @@ module Coursewareable::Api::V1
     end
 
     def collaborators
-      classroom = Coursewareable::Classroom.find(params[:class_id])
-
+      # @collaborators includes owner and collaborations
+      @collaborations = Coursewareable::Classroom.find(params[:class_id])
+      render :json => @collaborations
     end
 
     def timeline
