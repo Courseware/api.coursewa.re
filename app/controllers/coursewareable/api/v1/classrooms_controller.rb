@@ -16,6 +16,7 @@ module Coursewareable::Api::V1
     def collaborators
       # @collaborators includes owner and collaborations
       @classroom = Coursewareable::Classroom.find(params[:class_id])
+      @classroom[:include_collaborations] = true
       render :json => @classroom
     end
 
