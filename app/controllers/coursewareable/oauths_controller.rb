@@ -27,7 +27,7 @@ module Coursewareable
           render(:json => {
             :error => false, :provider => provider, :created => true } )
         rescue
-          render(:json => {
+          render(:status => 400, :json => {
             :error => true, :provider => provider, :created => false } )
         end
       end
