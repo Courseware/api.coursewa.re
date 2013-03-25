@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::ClassroomsController do
-  describe '#index' do
-    let(:token) { stub(:accessible? => true) }
-    let!(:classroom) { Fabricate('coursewareable/classroom') }
+  let(:classroom) { Fabricate('coursewareable/classroom') }
+  let(:token) do
+    stub :accessible? => true,
+    :resource_owner_id => classroom.owner.id
+  end
 
+  describe '#index' do
     before do
       controller.stub(:doorkeeper_token) { token }
       get(:index)
@@ -26,9 +29,6 @@ describe Coursewareable::Api::V1::ClassroomsController do
   end
 
   describe '#show' do
-    let(:token) { stub(:accessible? => true) }
-    let!(:classroom) { Fabricate('coursewareable/classroom') }
-
     before do
       controller.stub(:doorkeeper_token) { token }
       get(:show, :id => classroom.id)
@@ -50,12 +50,9 @@ describe Coursewareable::Api::V1::ClassroomsController do
   end
 
   describe '#timeline' do
-    let(:token) { stub(:accessible? => true) }
-    let!(:classroom) { Fabricate('coursewareable/classroom') }
-
     before do
       controller.stub(:doorkeeper_token) { token }
-      get(:timeline, :class_id => classroom.id)
+      get(:timeline, :classroom_id => classroom.id)
     end
 
     context 'authenticated' do
@@ -74,12 +71,11 @@ describe Coursewareable::Api::V1::ClassroomsController do
   end
 
   describe '#collaborators' do
-    let(:token) { stub(:accessible? => true) }
     let!(:collaboration) { Fabricate('coursewareable/collaboration') }
 
     before do
       controller.stub(:doorkeeper_token) { token }
-      get(:collaborators, :class_id => collaboration.classroom.id)
+      get(:collaborators, :classroom_id => collaboration.classroom.id)
     end
 
     context 'authenticated' do

@@ -13,13 +13,15 @@ describe Coursewareable::Api::V1::ClassroomsController do
     end
 
     it 'for collaborators' do
-      get('/v1/collaborators?class_id=1').should(
-        route_to('coursewareable/api/v1/classrooms#collaborators'))
+      get('/v1/classrooms/1/collaborators').should(
+        route_to('coursewareable/api/v1/classrooms#collaborators',
+          :classroom_id => "1"))
     end
 
     it 'for timeline' do
-      get('/v1/timeline?class_id=1').should(
-        route_to('coursewareable/api/v1/classrooms#timeline'))
+      get('/v1/classrooms/1/timeline').should(
+        route_to('coursewareable/api/v1/classrooms#timeline',
+          :classroom_id => "1"))
     end
   end
 end

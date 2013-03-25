@@ -89,6 +89,9 @@ GEM
     json (1.7.7)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (0.7.3)
     lumberjack (1.0.2)
     mail (2.5.3)
@@ -214,6 +217,7 @@ DEPENDENCIES
   fabrication
   ffaker
   guard-rspec
+  kaminari
   mina
   multi_json
   oj
