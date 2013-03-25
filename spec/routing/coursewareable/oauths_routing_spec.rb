@@ -1,0 +1,16 @@
+require 'spec_helper'
+
+describe Coursewareable::OauthsController do
+
+  describe 'routing' do
+    it 'for OAuth callbacks' do
+      get('/oauth/callback').should route_to('coursewareable/oauths#callback')
+    end
+
+    it 'for OAuth provider handling' do
+      get('/oauth/fb').should route_to(
+        'coursewareable/oauths#oauth', :provider => 'fb')
+    end
+
+  end
+end

@@ -12,3 +12,6 @@ end
 ).each do |task|
   Rake.application.remove_task task
 end
+
+# Do not run migrations if in production, non API app should handle those
+Rake.application.remove_task('db:migrate') if Rails.env.production?
