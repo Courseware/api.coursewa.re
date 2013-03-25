@@ -9,6 +9,7 @@ Coursewareable::Engine.routes.draw do
 
   # External authentication callback
   match 'oauth/callback' => 'oauths#callback'
+  match 'oauth/authenticate' => 'oauths#authenticate'
   match 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
 end
 

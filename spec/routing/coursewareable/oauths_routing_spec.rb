@@ -12,5 +12,10 @@ describe Coursewareable::OauthsController do
         'coursewareable/oauths#oauth', :provider => 'fb')
     end
 
+    it 'for credential authentication' do
+      post('/oauth/authenticate').should route_to(
+        'coursewareable/oauths#authenticate')
+    end
+
   end
 end
