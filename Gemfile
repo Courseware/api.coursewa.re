@@ -24,6 +24,7 @@ group :development do
   gem 'yard', :require => false
   gem 'mina', :require => false
   gem 'pry-rails'
+  gem 'seedbank'
 end
 
 group :development, :test do
