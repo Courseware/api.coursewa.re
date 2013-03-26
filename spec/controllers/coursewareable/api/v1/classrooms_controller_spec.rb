@@ -59,7 +59,7 @@ describe Coursewareable::Api::V1::ClassroomsController do
       its(:status) { should eq(200) }
       it 'should render timeline for requested classroom' do
         body = JSON.parse(response.body)
-        body['classrooms'].first['owner_id'].should eq(classroom.owner.id )
+        body['classrooms'].first['owner_id'].should eq(classroom.owner.id)
       end
     end
 

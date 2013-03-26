@@ -24,21 +24,12 @@ module Coursewareable::Api::V1
 
     # Render the timeline of classroom
     def timeline
-      timeline = Coursewareable::Classroom.find(params[:classroom_id]).all_activities
+      classroom = Coursewareable::Classroom.find(params[:classroom_id])
 
       # Paginate the timeline
-      timeline = ::Kaminari.paginate_array(timeline).page(params[:page])
-      timeline = timeline.per(params[:limit]).offset(params[:offset])
+      timeline = classroom.all_activities.limit(params[:limit]).offset(params[:offset])
+
       render :json => timeline
-    end
-
-    private
-
-    # Return the current_user
-    def current_resource_owner
-      if doorkeeper_token
-        Coursewareable::User.find(doorkeeper_token.resource_owner_id)
-      end
     end
   end
 end
