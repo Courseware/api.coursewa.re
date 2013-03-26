@@ -2,12 +2,12 @@ module Coursewareable::Api::V1
   # [Coursewareable::Syllabus] API controller
   class SyllabusesController < ApplicationController
 
-    # Ask for an oAuth toke first
+    # Ask for an oAuth token first
     doorkeeper_for :show
 
     # Render requested syllabus
     def show
-      syllabus = Coursewareable::Syllabus.find(params[:id])
+      syllabus = Coursewareable::Classroom.find(params[:classroom_id]).syllabus
 
       render :json => syllabus
     end

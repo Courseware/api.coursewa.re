@@ -4,13 +4,13 @@ describe Coursewareable::Api::V1::SyllabusesController do
   let(:syllabus) { Fabricate('coursewareable/syllabus') }
   let(:token) do
     stub :accessible? => true,
-    :response_owner_id => syllabus.classroom.owner.id
+    :resource_owner_id => syllabus.classroom.owner.id
   end
 
   describe '#show' do
     before do
       controller.stub(:doorkeeper_token) { token }
-      get(:show, :id => syllabus.id)
+      get(:show, :classroom_id => syllabus.classroom.id)
     end
 
     context 'authenticated' do
