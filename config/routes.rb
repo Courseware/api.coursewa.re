@@ -4,6 +4,7 @@ Coursewareable::Engine.routes.draw do
       resources :users, :only => [] do
         get :me, :on => :collection
       end
+      resources :assignments, :only => [:index, :show]
     end
   end
 
