@@ -2,33 +2,31 @@ module Coursewareable::Api::V1
   # [Coursewareable::Classroom] API controller
   class ClassroomsController < ApplicationController
 
+    # Lists available classrooms
     def index
       classrooms = current_resource_owner.classrooms
       render :json => classrooms
     end
 
+    # Lists classroom details
     def show
-      classroom = Coursewareable::Classroom.find(params[:id])
+      classroom = current_resource_owner.classrooms.find(params[:id])
       render :json => classroom
     end
 
-    # Render the collaborators of a specified classroom
-    # This method is the same as #show, but this render just collaborations
+    # Render the classrooms collaborators
     def collaborators
-      # @collaborators includes owner and collaborations
-      classroom = Coursewareable::Classroom.find(params[:classroom_id])
-      classroom[:include_collaborations] = true
-      render :json => classroom
+      classroom = current_resource_owner.classrooms.find(params[:classroom_id])
+      render :json => classroom.collaborators, :root => :collaborators
     end
 
     # Render the timeline of classroom
     def timeline
-      classroom = Coursewareable::Classroom.find(params[:classroom_id])
+      classroom = current_resource_owner.classrooms.find(params[:classroom_id])
+      timeline = classroom.all_activities.limit(
+        params[:limit]).offset(params[:offset])
 
-      # Paginate the timeline
-      timeline = classroom.all_activities.limit(params[:limit]).offset(params[:offset])
-
-      render :json => timeline
+      render :json => timeline, :root => :activities
     end
   end
 end
