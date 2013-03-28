@@ -11,6 +11,7 @@ Coursewareable::Engine.routes.draw do
       resource :syllabus, :only => [:show]
       resources :lectures, :only => [:index, :show]
       resources :assignments, :only => [:index, :show]
+      resource :response, :only => [:show]
     end
   end
 
