@@ -4,7 +4,7 @@ module Coursewareable::Api::V1
 
     # Handles user profile
     def me
-      render :json => current_user
+      render :json => current_resource_owner, :root => :user
     end
 
   end

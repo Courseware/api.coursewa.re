@@ -1,16 +1,26 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::UsersController do
-  describe '#me' do
-    let(:token) { stub(:accessible? => true) }
+  let(:user) { Fabricate(:confirmed_user) }
+  let(:token) { stub(:accessible? => true, :resource_owner_id => user.id) }
 
-    before do
-      controller.stub(:doorkeeper_token) { token }
-      get :me
-    end
+  before do
+    controller.stub(:doorkeeper_token) { token }
+  end
+
+  describe '#me' do
+    before { get :me }
 
     context 'authenticated' do
       its(:status) { should eq(200) }
+
+      it 'renders user profile' do
+        body = JSON.parse(response.body)
+        body['user']['id'].should eq(user.id)
+        body['user']['email'].should eq(user.email)
+        body['user']['first_name'].should eq(user.first_name)
+        body['user']['last_name'].should eq(user.last_name)
+      end
     end
 
     context 'not authenticated' do
