@@ -3,13 +3,15 @@ require 'spec_helper'
 describe Coursewareable::Api::V1::ClassroomsController do
   let(:classroom) { Fabricate('coursewareable/classroom') }
   let(:token) do
-    stub :accessible? => true,
-    :resource_owner_id => classroom.owner.id
+    stub(:accessible? => true, :resource_owner_id => classroom.owner.id)
+  end
+
+  before do
+    controller.stub(:doorkeeper_token) { token }
   end
 
   describe '#index' do
     before do
-      controller.stub(:doorkeeper_token) { token }
       get(:index)
     end
 
@@ -30,12 +32,12 @@ describe Coursewareable::Api::V1::ClassroomsController do
 
   describe '#show' do
     before do
-      controller.stub(:doorkeeper_token) { token }
       get(:show, :id => classroom.id)
     end
 
     context 'authenticated' do
       its(:status) { should eq(200) }
+
       it 'should give information about requested classroom' do
         body = JSON.parse(response.body)
         body['classroom']['title'].should eq(classroom.title)
@@ -51,15 +53,15 @@ describe Coursewareable::Api::V1::ClassroomsController do
 
   describe '#timeline' do
     before do
-      controller.stub(:doorkeeper_token) { token }
       get(:timeline, :classroom_id => classroom.id)
     end
 
     context 'authenticated' do
       its(:status) { should eq(200) }
+
       it 'should render timeline for requested classroom' do
         body = JSON.parse(response.body)
-        body['classrooms'].first['owner_id'].should eq(classroom.owner.id)
+        body['activities'].first['owner_id'].should eq(classroom.owner.id)
       end
     end
 
@@ -71,19 +73,20 @@ describe Coursewareable::Api::V1::ClassroomsController do
   end
 
   describe '#collaborators' do
-    let!(:collaboration) { Fabricate('coursewareable/collaboration') }
+    let(:collaboration) do
+      Fabricate('coursewareable/collaboration', :classroom => classroom)
+    end
 
     before do
-      controller.stub(:doorkeeper_token) { token }
       get(:collaborators, :classroom_id => collaboration.classroom.id)
     end
 
     context 'authenticated' do
       its(:status) { should eq(200) }
-      it 'should render collaborators and owner' do
-        body = JSON.parse(response.body)['classroom']
-        body['owner']['user']['email'].should(
-          eq(collaboration.classroom.owner.email))
+
+      it 'should render collaborators' do
+        body = JSON.parse(response.body)['collaborators']
+        body.first['email'].should eq(collaboration.user.email)
       end
     end
 
