@@ -1,3 +1,4 @@
+# [Coursewareable::Collaboration] serializer class
 class Coursewareable::CollaborationSerializer < ActiveModel::Serializer
-  attributes :id, :user, :type
+  attributes :id, :user
 end
