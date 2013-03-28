@@ -4,10 +4,14 @@ Coursewareable::Engine.routes.draw do
       resources :users, :only => [] do
         get :me, :on => :collection
       end
+
       resources :classrooms, :only => [:index, :show] do
         get :collaborators
         get :timeline
       end
+
+      resource :syllabus, :only => [:show]
+
     end
   end
 
