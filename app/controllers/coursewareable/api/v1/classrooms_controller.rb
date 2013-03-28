@@ -1,7 +1,6 @@
 module Coursewareable::Api::V1
   # [Coursewareable::Classroom] API controller
   class ClassroomsController < ApplicationController
-    doorkeeper_for :index, :show, :collaborators, :timeline
 
     def index
       classrooms = current_resource_owner.classrooms
