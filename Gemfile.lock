@@ -66,6 +66,7 @@ GEM
     ffaker (1.15.0)
     ffi (1.4.0)
     friendly_id (4.0.9)
+    github-markup (0.7.5)
     github_api (0.8.11)
       faraday (~> 0.8.1)
       hashie (~> 1.2.0)
@@ -159,6 +160,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (2.2.2)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -214,6 +216,7 @@ DEPENDENCIES
   doorkeeper
   fabrication
   ffaker
+  github-markup
   guard-rspec
   mina
   multi_json
@@ -224,6 +227,7 @@ DEPENDENCIES
   puma
   rails-api
   rb-inotify
+  redcarpet
   rspec-rails (= 2.12.0)
   seedbank
   simplecov
