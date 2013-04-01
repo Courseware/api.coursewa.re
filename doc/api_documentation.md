@@ -1,4 +1,4 @@
-Coursewa.re API endpoint documentation
+API Documentation
 ======================================
 
 The following examples use `curl` command to get the response from the server.
