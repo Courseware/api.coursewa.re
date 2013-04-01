@@ -13,13 +13,12 @@ class Coursewareable::OauthsController < ::ApplicationController
       token = app.authorized_tokens.where(:resource_owner_id => user.id).last
 
       # Generate a new token if none found
-      token = app.authorized_tokens.create(
-        :resource_owner_id => user.id,
-        :use_refresh_token => Doorkeeper.configuration.refresh_token_enabled?
-      ) if token.nil?
+      if token.nil?
+        token = app.authorized_tokens.create(:resource_owner_id => user.id)
+      end
 
       # Refresh token anyway to avoid expired tokens
-      render :json => { :error => false, :access_token => token.refresh_token}
+      render :json => { :error => false, :access_token => token.token}
     else
       render :status => 400, :json => { :error => true }
     end

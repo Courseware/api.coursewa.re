@@ -120,12 +120,13 @@ describe Coursewareable::OauthsController do
         access_token = body['access_token']
         access_token.should_not be_blank
 
-        token = Doorkeeper::AccessToken.where(
-          :refresh_token => access_token).first
+        tokens = Doorkeeper::AccessToken.where(
+          :resource_owner_id => user.id, :application_id => oauth_app.id)
+        tokens.count.should eq(1)
 
-          token.should_not be_expired
-          token.should_not be_revoked
-          token.resource_owner_id.should eq(user.id)
+        token = tokens.first
+        token.should_not be_expired
+        token.should_not be_revoked
       end
     end
   end #credentials
