@@ -357,7 +357,37 @@ Response:
     "slug":"quibusdam-non-in-quaerat-ea-mollitia-provident",
     "title":"Quibusdam non in quaerat ea mollitia provident.",
     "content":"<h1>Repudiandae enim</h1><table>\n<thead><tr>\n<th>Corporis</th>\n      <th>Molestias</th>\n      <th>Quia</th>\n      <th>Aliquam</th>\n      </tr></thead>\n<tbody></tbody>\n</table><h2>Aperiam illo</h2>Nulla rerum quis provident.",
-    "quiz":null,
+    "quiz":[{
+      "content":"Quisquam occaecati voluptates quo maiores nihil nulla sed tempore.",
+      "type":"text",
+      "options":[{"content":"cum","valid":true}]
+    },{
+      "content":"Ut modi est eum neque et aut sint vel.",
+      "type":"checkboxes",
+      "options":[{
+        "content":"nihil",
+        "valid":true
+      },{
+        "content":"libero",
+        "valid":false
+      },{
+        "content":"nisi",
+        "valid":true
+      }]
+    },{
+      "content":"Reiciendis ut illo ut numquam.",
+      "type":"radios",
+      "options":[{
+        "content":"architecto",
+        "valid":true
+      },{
+        "content":"magnam",
+        "valid":false
+      },{
+        "content":"voluptatem",
+        "valid":false
+      }]
+    }],
     "user":{
       "id":1,
       "email":"calin@coursewa.re",
@@ -378,7 +408,37 @@ Response:
     "slug":"quibusdam-non-in-quaerat-ea-mollitia-provident",
     "title":"Quibusdam non in quaerat ea mollitia provident.",
     "content":"<h1>Repudiandae enim</h1><table>\n<thead><tr>\n<th>Corporis</th>\n      <th>Molestias</th>\n      <th>Quia</th>\n      <th>Aliquam</th>\n      </tr></thead>\n<tbody></tbody>\n</table><h2>Aperiam illo</h2>Nulla rerum quis provident.",
-    "quiz":null,
+    "quiz":[{
+      "content":"Quisquam occaecati voluptates quo maiores nihil nulla sed tempore.",
+      "type":"text",
+      "options":[{"content":"cum","valid":true}]
+    },{
+      "content":"Ut modi est eum neque et aut sint vel.",
+      "type":"checkboxes",
+      "options":[{
+        "content":"nihil",
+        "valid":true
+      },{
+        "content":"libero",
+        "valid":false
+      },{
+        "content":"nisi",
+        "valid":true
+      }]
+    },{
+      "content":"Reiciendis ut illo ut numquam.",
+      "type":"radios",
+      "options":[{
+        "content":"architecto",
+        "valid":true
+      },{
+        "content":"magnam",
+        "valid":false
+      },{
+        "content":"voluptatem",
+        "valid":false
+      }]
+    }],
     "user":{
       "id":1,
       "email":"calin@coursewa.re",
