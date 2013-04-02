@@ -90,18 +90,73 @@ Response:
 > ```json
 {
   "activities":[{
-    "created_at":"2013-04-01T15:50:30Z",
     "id":26,
-    "key":"coursewareable_syllabus.create",
-    "owner_id":1,
-    "owner_type":"Coursewareable::User",
-    "parameters": { "user_name":"Leopoldo Hintz" },
-    "recipient_id":1,
-    "recipient_type":"Coursewareable::Classroom",
-    "trackable_id":1,
-    "trackable_type":"Coursewareable::Syllabus",
-    "updated_at":"2013-04-01T15:50:30Z"
-  }]
+    "recipient_type":
+    "coursewareable/classroom",
+    "trackable_type":"coursewareable/syllabus",
+    "owner":{
+      "id":1,
+      "email":"calin@coursewa.re",
+      "first_name":"Leopoldo",
+      "last_name":"Hintz"
+    },
+    "recipient":{
+      "id":1,
+      "description":"Aspernatur officiis accusantium.",
+      "title":"University of Georgia",
+      "owner":{
+        "id":1,
+        "email":"calin@coursewa.re",
+        "first_name":"Leopoldo",
+        "last_name":"Hintz"
+      }
+    },
+    "trackable":{
+      "id":1,
+      "title":"Hic rerum eveniet iste fuga dolore omnis fugit.",
+      "content":"<h1>Quas reprehenderit</h1><p><strong>Consequatur non</strong>.",
+      "intro":"Dolorem perferendis autem nulla.",
+      "title":"University of Georgia",
+      "owner":{
+        "id":1,
+        "email":"calin@coursewa.re",
+        "first_name":"Leopoldo",
+        "last_name":"Hintz"
+      }
+    }
+  },{
+    "id":24,
+    "recipient_type":"coursewareable/classroom",
+    "trackable_type":"coursewareable/association",
+    "owner":{
+      "id":1,"email":"calin@coursewa.re",
+      "first_name":"leopoldo",
+      "last_name":"hintz"
+    },
+    "recipient":{
+      "id":1,
+      "description":"aspernatur officiis accusantium voluptates earum perferendis cupiditate minima molestiae.",
+      "title":"university of georgia",
+      "owner":{
+        "id":1,
+        "email":"calin@coursewa.re",
+        "first_name":"leopoldo",
+        "last_name":"hintz"
+      }
+    },
+    "trackable":{
+      "classroom_id":1,
+      "created_at":"2013-04-01t15:50:29z",
+      "email_announcement":{
+        "send_grades":true,
+        "send_announcements":true,
+        "send_generic":false
+      },
+      "id":9,
+      "updated_at":"2013-04-01t15:50:29z",
+      "user_id":8
+    }
+  }
 }
 
 Syllabus

@@ -61,7 +61,7 @@ describe Coursewareable::Api::V1::ClassroomsController do
 
       it 'should render timeline for requested classroom' do
         body = JSON.parse(response.body)
-        body['activities'].first['owner_id'].should eq(classroom.owner.id)
+        body['activities'].first['id'].should eq(classroom.all_activities.first.id)
       end
     end
 

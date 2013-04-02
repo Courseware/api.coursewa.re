@@ -23,10 +23,9 @@ module Coursewareable::Api::V1
     # Render the timeline of classroom
     def timeline
       classroom = current_resource_owner.classrooms.find(params[:classroom_id])
-      timeline = classroom.all_activities.limit(
+      activities = classroom.all_activities.limit(
         params[:limit]).offset(params[:offset])
-
-      render :json => timeline, :root => :activities
+      render :json => activities, :root => :activities, :each_serializer => Coursewareable::ActivitySerializer
     end
   end
 end
