@@ -22,6 +22,8 @@ group :development do
   gem 'sqlite3'
   gem 'cane'
   gem 'yard', :require => false
+  gem 'redcarpet', :require => false
+  gem 'github-markup', :require => false
   gem 'mina', :require => false
   gem 'pry-rails'
   gem 'seedbank'

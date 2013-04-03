@@ -22,3 +22,5 @@ Run `bundle exec rake` to run tests.
 # Database
 
 A note on migrations. Ideally, the non API application should handle these!
+
+{include:file:doc/api_documentation.md}
