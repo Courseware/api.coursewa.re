@@ -1,9 +1,7 @@
 Coursewareable::Engine.routes.draw do
   scope :module => :api do
     namespace :v1 do
-      resources :users, :only => [] do
-        get :me, :on => :collection
-      end
+      resources :users, :only => [:index]
       resources :classrooms, :only => [:index, :show] do
         get :collaborators
         get :timeline
