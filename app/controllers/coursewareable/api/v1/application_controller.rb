@@ -5,7 +5,7 @@ module Coursewareable::Api::V1
     # Require an OAuth token for API resources
     doorkeeper_for :all
 
-    private
+    protected
 
     # Loads user owning the access token
     def current_resource_owner
