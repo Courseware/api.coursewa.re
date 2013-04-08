@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Coursewareable::Api::V1::AssignmentsController do
   let(:assignment) { Fabricate('coursewareable/assignment') }
   let(:token) do
-    stub(:accessible? => true,:resource_owner_id => assignment.user.id)
+    stub(:accessible? => true, :resource_owner_id => assignment.user.id)
   end
   before { controller.stub(:doorkeeper_token) { token } }
 

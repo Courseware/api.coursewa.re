@@ -16,10 +16,12 @@ describe Coursewareable::Api::V1::UsersController do
 
       it 'renders user profile' do
         body = JSON.parse(response.body)
-        body['user']['id'].should eq(user.id)
-        body['user']['email'].should eq(user.email)
-        body['user']['first_name'].should eq(user.first_name)
-        body['user']['last_name'].should eq(user.last_name)
+
+        body['users'].count.should eq(1)
+        body['users'].first['id'].should eq(user.id)
+        body['users'].first['email'].should eq(user.email)
+        body['users'].first['first_name'].should eq(user.first_name)
+        body['users'].first['last_name'].should eq(user.last_name)
       end
     end
 

@@ -4,7 +4,7 @@ module Coursewareable::Api::V1
 
     # Render user assignments
     def index
-      assignments = current_resource_owner.assignments
+      assignments = @current_resource_owner.assignments
 
       render :json => assignments
     end
@@ -12,9 +12,9 @@ module Coursewareable::Api::V1
     # Render requested assignment
     def show
       if params[:classroom_id].blank?
-        assignment = current_resource_owner.assignments.find(params[:id])
+        assignment = @current_resource_owner.assignments.find(params[:id])
       else
-        classroom = current_resource_owner.classrooms.find(
+        classroom = @current_resource_owner.classrooms.find(
           params[:classroom_id])
         assignment = classroom.assignments.find(params[:id])
       end

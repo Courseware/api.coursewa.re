@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Coursewareable::Api::V1::SyllabusesController do
   let(:syllabus) { Fabricate('coursewareable/syllabus') }
   let(:token) do
-    stub(:accessible? => true, :resource_owner_id => syllabus.user.id)
+    stub :accessible? => true, :resource_owner_id => syllabus.classroom.owner.id
   end
 
   before do

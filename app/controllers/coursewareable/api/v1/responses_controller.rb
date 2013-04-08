@@ -4,7 +4,7 @@ module Coursewareable::Api::V1
 
     # Render requested response
     def show
-      resp = current_resource_owner.responses.where(
+      resp = @current_resource_owner.responses.where(
         :assignment_id => params[:assignment_id]).first
       render :json => resp, :root => :response
     end
