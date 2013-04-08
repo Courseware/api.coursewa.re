@@ -8,8 +8,8 @@ describe Coursewareable::Api::V1::UsersController do
     controller.stub(:doorkeeper_token) { token }
   end
 
-  describe '#me' do
-    before { get :me }
+  describe '#index' do
+    before { get :index }
 
     context 'authenticated' do
       its(:status) { should eq(200) }

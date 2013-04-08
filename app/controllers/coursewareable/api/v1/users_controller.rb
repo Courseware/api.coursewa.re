@@ -3,7 +3,7 @@ module Coursewareable::Api::V1
   class UsersController < ApplicationController
 
     # Handles user profile
-    def me
+    def index
       render :json => current_resource_owner, :root => :user
     end
 
