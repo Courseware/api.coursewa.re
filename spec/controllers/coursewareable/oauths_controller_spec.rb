@@ -94,13 +94,14 @@ describe Coursewareable::OauthsController do
     describe '#authenticate' do
       let(:user){ Fabricate(:confirmed_user) }
       let(:oauth_app){ Fabricate(:doorkeeper_app) }
+      let(:existing_token) { '' }
 
       before do
-        post(:authenticate, :email => user.email,
-             :password => 'secret', :client_id => oauth_app.uid)
+        post(:authenticate, :email => user.email, :password => 'secret',
+             :client_id => oauth_app.uid, :access_token => existing_token)
       end
 
-      context 'wrong application key' do
+      context 'with wrong application key' do
         before(:all) { oauth_app.uid = rand(100) }
 
         it 'responds with error' do
@@ -108,6 +109,51 @@ describe Coursewareable::OauthsController do
 
           body = JSON.parse(response.body)
           body['error'].should be_true
+        end
+      end
+
+      context 'with wrong user credentials' do
+        before(:all) do
+          user.stub(:email) { Faker::Internet.email }
+        end
+
+        it 'responds with error' do
+          response.status.should eq(400)
+
+          body = JSON.parse(response.body)
+          body['error'].should be_true
+        end
+      end
+
+      context 'with existing access token' do
+        before(:all) do
+          user.stub(:email) { '' }
+        end
+
+        context 'which is ok' do
+          let(:existing_token) do
+            oauth_app.authorized_tokens.create(
+              :resource_owner_id => user.id).token
+          end
+
+          it 'responds with validated access token' do
+            response.status.should eq(200)
+
+            body = JSON.parse(response.body)
+            body['error'].should be_false
+            body['access_token'].should eq(existing_token)
+          end
+        end
+
+        context 'which is wrong' do
+          let(:existing_token) { rand(100..200) }
+
+          it 'responds with an error' do
+            response.status.should eq(400)
+
+            body = JSON.parse(response.body)
+            body['error'].should be_true
+          end
         end
       end
 

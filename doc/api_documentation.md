@@ -21,6 +21,17 @@ Otherwise, if `client_id`, `email` or `password` are wrong, the response is:
   "error":true
 }
 
+In order to revalidate the token, you can send it over:
+
+> curl "http://api.coursewa.re/oauth/authenticate?access_token=d26642e0b5af0799ea4214f5efaeebb9af36a3f0b35145650eb7a39b56e9ef79"
+
+If the token is valid, you will get a response like below:
+
+> ```json
+{
+  "error":false, "access_token":"d26642e0b5af0799ea4214f5efaeebb9af36a3f0b35145650eb7a39b56e9ef79"
+}
+
 Now you can use the `accesss_token` to request data from the server. In the following commands we will use the `access_token` as ACCES_TOKEN.
 
 Classrooms

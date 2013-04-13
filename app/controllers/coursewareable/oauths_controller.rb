@@ -3,6 +3,7 @@ class Coursewareable::OauthsController < ::ApplicationController
   # Using user credentials and OAuth app key
   # we authenticate the user and generate a token if none exists
   def authenticate
+    access_token = params[:access_token]
     user = login(params[:email], params[:password])
     app = Doorkeeper::Application.where(:uid => params[:client_id] ).first
 
@@ -17,11 +18,15 @@ class Coursewareable::OauthsController < ::ApplicationController
         token = app.authorized_tokens.create(:resource_owner_id => user.id)
       end
 
-      # Refresh token anyway to avoid expired tokens
-      render :json => { :error => false, :access_token => token.token}
-    else
-      render :status => 400, :json => { :error => true }
+      render :json => {:error => false, :access_token => token.token} and return
+    elsif !access_token.blank?
+      token = Doorkeeper::AccessToken.where(:token => access_token).first
+
+      render :json => {:error => false, :access_token => token.token} and
+        return if !token.nil? and token.accessible?
     end
+
+    render :status => 400, :json => { :error => true }
   end
 
   # Sends the user on a trip to the provider,
