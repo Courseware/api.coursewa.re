@@ -20,7 +20,7 @@ describe Coursewareable::Api::V1::SyllabusesController do
 
       it 'should render requested syllabus' do
         body = JSON.parse(response.body)
-        body['syllabus']['title'].should eq(syllabus.title)
+        body['syllabus'].first['title'].should eq(syllabus.title)
       end
     end
 

@@ -8,7 +8,7 @@ module Coursewareable::Api::V1
     # Render requested syllabus
     def show
       classroom = @current_resource_owner.classrooms.find(params[:classroom_id])
-      render :json => classroom.syllabus, :root => :syllabus
+      render :json => [classroom.syllabus], :root => :syllabus
     end
   end
 end

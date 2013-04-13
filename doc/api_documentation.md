@@ -179,17 +179,19 @@ To request the syllabus of a classroom:
 Response:
 > ```json
 {
-  "syllabus":{
-    "id":1,
-    "title":"Hic rerum eveniet iste fuga dolore omnis fugit.",
-    "content":"<h1>Quas reprehenderit</h1><p><strong>Consequatur non</strong>. <em>Architecto unde sunt aliquam et sit minima. Fuga quidem exercitationem ullam in iste. Vel unde aliquid quas.</em> <code>sed maiores</code></p><p><strong>Saepe placeat</strong>.",
-    "user":{
+  "syllabus":[
+    0: {
       "id":1,
-      "email":"calin@coursewa.re",
-      "first_name":"Leopoldo",
-      "last_name":"Hintz"
+        "title":"Hic rerum eveniet iste fuga dolore omnis fugit.",
+        "content":"<h1>Quas reprehenderit</h1><p><strong>Consequatur non</strong>. <em>Architecto unde sunt aliquam et sit minima. Fuga quidem exercitationem ullam in iste. Vel unde aliquid quas.</em> <code>sed maiores</code></p><p><strong>Saepe placeat</strong>.",
+        "user":{
+          "id":1,
+          "email":"calin@coursewa.re",
+          "first_name":"Leopoldo",
+          "last_name":"Hintz"
+        }
     }
-  }
+  ]
 }
 
 Lectures
