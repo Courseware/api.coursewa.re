@@ -15,7 +15,7 @@ set :codename, 'api.coursewa.re'
 set :port, '8000'
 set :user, 'deployer'
 set :domain, 'lipsett.nerd.ro'
-set :deploy_to, "/home/#{user}/apps/#{codename}"
+set :deploy_to, "/home/#{user}/#{codename}"
 set :repository, 'git@api-coursewa-re.github.com:stas/api.coursewa.re.git'
 set :branch, 'courseware'
 
