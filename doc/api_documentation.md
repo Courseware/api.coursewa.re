@@ -1,36 +1,43 @@
 API Documentation
 ======================================
 
-The following examples use `curl` command to get the response from the server.
+The following examples use `$ curl` command to get the response from the server.
 
 Sign in
 -------
 To authenticate you need `client_id`, which is the `uid` of application, `email` and `password` of an user. For example:
-> curl "http://api.coursewa.re/oauth/authenticate?client_id=f2840c1ddfa2d03e21f64d68a5cde21502f19ad145daf2cf71d3eb336b21ba29&email=calin@coursewa.re&password=secret"
+```bash
+$ curl "http://api.coursewa.re/oauth/authenticate?client_id=f2840c1ddfa2d03e21f64d68a5cde21502f19ad145daf2cf71d3eb336b21ba29&email=calin@coursewa.re&password=secret"
+```
 
 And the response should be:
-> ```json
+```json
 {
   "error":false,
   "accesss_token":"d26642e0b5af0799ea4214f5efaeebb9af36a3f0b35145650eb7a39b56e9ef79"
 }
+```
 
 Otherwise, if `client_id`, `email` or `password` are wrong, the response is:
-> ```json
+```json
 {
   "error":true
 }
+```
 
 In order to revalidate the token, you can send it over:
 
-> curl "http://api.coursewa.re/oauth/authenticate?access_token=d26642e0b5af0799ea4214f5efaeebb9af36a3f0b35145650eb7a39b56e9ef79"
+```bash
+$ curl "http://api.coursewa.re/oauth/authenticate?access_token=d26642e0b5af0799ea4214f5efaeebb9af36a3f0b35145650eb7a39b56e9ef79"
+```
 
 If the token is valid, you will get a response like below:
 
-> ```json
+```json
 {
   "error":false, "access_token":"d26642e0b5af0799ea4214f5efaeebb9af36a3f0b35145650eb7a39b56e9ef79"
 }
+```
 
 Now you can use the `accesss_token` to request data from the server. In the following commands we will use the `access_token` as ACCES_TOKEN.
 
@@ -38,10 +45,12 @@ Classrooms
 ----------
 
 To request information about classrooms that user is attended use following link:
-> curl "http://api.coursewa.re/v1/classrooms?accesss_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/classrooms?accesss_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "classrooms":[{
     "id":1,
@@ -55,12 +64,15 @@ Response:
     }
   }]
 }
+```
 
 To request information about a specified classroom, you should put the id of classroom in the link:
-> curl "http://api.coursewa.re/v1/classrooms/:id?access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/classrooms/:id?access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "classroom":{
     "id":1,
@@ -74,12 +86,15 @@ Response:
     }
   }
 }
+```
 
 To request collaborators of a classroom, you should put the id of classroom:
-> curl "http://api.coursewa.re/v1/classrooms/:classroom_id/collaborators?access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/classrooms/:classroom_id/collaborators?access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "collaborators":[{
     "id":4,
@@ -93,12 +108,15 @@ Response:
     "last_name":"Zboncak"
   }]
 }
+```
 
 To request all activities in a classroom that user is attended:
-> curl "http://api.coursewa.re/v1/classrooms/:classroom_id/timeline?access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/classrooms/:classroom_id/timeline?access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "activities":[{
     "id":26,
@@ -169,15 +187,18 @@ Response:
     }
   }
 }
+```
 
 Syllabus
 --------
 
 To request the syllabus of a classroom:
-> curl "http://api.coursewa.re/v1/syllabus?classroom_id=:classroom_id&access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/syllabus?classroom_id=:classroom_id&access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "syllabus":[
     0: {
@@ -193,14 +214,17 @@ Response:
     }
   ]
 }
+```
 
 Lectures
 --------
 To request all lectures which belongs to logged user:
-> curl "http://api.coursewa.re/v1/lectures?access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/lectures?access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "lectures":[{
     "id":1,
@@ -216,12 +240,15 @@ Response:
     "requisite":"Ipsam autem non quos velit qui qui beatae occaecati."
   }]
 }
+```
 
 To request a specified lecture which belongs to logged user:
-> curl "http://api.coursewa.re/v1/lectures/:id?access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/lectures/:id?access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "lecture":{
     "id":1,
@@ -231,12 +258,15 @@ Response:
     "requisite":"Ipsam autem non quos velit qui qui beatae occaecati."
   }
 }
+```
 
 To request a specified lecture which belongs to classroom:
-> curl "http://api.coursewa.re/v1/lectures/:id?classroom_id=:classroom_id&access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/lectures/:id?classroom_id=:classroom_id&access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "lecture":{
     "id":1,
@@ -246,15 +276,18 @@ Response:
     "requisite":"Ipsam autem non quos velit qui qui beatae occaecati."
   }
 }
+```
 
 Responses
 ---------
 
 To request a response that belong to logged user:
-> curl "http://api.coursewa.re/v1/response?assignment_id=:assignment_id&access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/response?assignment_id=:assignment_id&access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "response":{
     "id":1,
@@ -304,15 +337,19 @@ Response:
     }
   }
 }
+```
 
 Assignments
 -----------
 
 To request all assignments which belong to logged user:
-> curl "http://api.coursewa.re/v1/assignments?access_token=ACCESS_TOKEN"
+
+```bash
+$ curl "http://api.coursewa.re/v1/assignments?access_token=ACCESS_TOKEN"
+```
 
 Reponse:
-> ```json
+```json
 {
   "assignments":[{
     "id":1,
@@ -358,12 +395,15 @@ Reponse:
     }
   }
 }
+```
 
 To request a specified assigment that belong to a logged user:
-> curl "http://api.coursewa.re/v1/assignments/:id?access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/assignments/:id?access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "assignment":{
     "id":1,
@@ -409,12 +449,15 @@ Response:
     }
   }
 }
+```
 
 To request a specified assigment that belong to a classroom:
-> curl "http://api.coursewa.re/v1/assignments/:id?classroom_id=:classroom_id&access_token=ACCESS_TOKEN"
+```bash
+$ curl "http://api.coursewa.re/v1/assignments/:id?classroom_id=:classroom_id&access_token=ACCESS_TOKEN"
+```
 
 Response:
-> ```json
+```json
 {
   "assignment":{
     "id":1,
@@ -460,5 +503,6 @@ Response:
     }
   }
 }
+```
 
 Note: all symbols that represents parameters value should be changed.
