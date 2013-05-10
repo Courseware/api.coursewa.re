@@ -10,14 +10,14 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :codename, 'api.journey.nerd.ro'
+set :codename, 'api.coursewa.re'
 
 set :port, '8000'
 set :user, 'deployer'
-set :domain, 'polanski.nerd.ro'
+set :domain, 'lipsett.nerd.ro'
 set :deploy_to, "/home/#{user}/apps/#{codename}"
 set :repository, 'git@api-coursewa-re.github.com:stas/api.coursewa.re.git'
-set :branch, 'master'
+set :branch, 'courseware'
 
 set :pid_file, "#{deploy_to}/shared/tmp/pids/#{rails_env}.pid"
 set :app_port, '3002'
@@ -88,12 +88,10 @@ desc 'Starts the application'
 task :start => :environment do
   queue "cd #{app_path} ; bundle exec rackup -s puma -O Threads=0:1 " +
     "-p #{app_port} -P #{pid_file} -E #{rails_env} -D"
-  # queue "cd #{app_path} ; RAILS_ENV=#{rails_env} ./script/delayed_job start"
 end
 
 desc 'Stops the application'
 task :stop => :environment do
-  # queue "cd #{app_path} ; RAILS_ENV=#{rails_env} ./script/delayed_job stop"
   queue %[kill -9 `cat #{pid_file}`]
 end
 
