@@ -1,7 +1,7 @@
 API Documentation
 ======================================
 
-The following examples use `$ curl` command to get the response from the server.
+The following examples use `curl` command to get the response from the server.
 
 Sign in
 -------
