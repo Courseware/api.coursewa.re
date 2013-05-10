@@ -24,7 +24,7 @@ group :development do
   gem 'yard', :require => false
   gem 'redcarpet', :require => false
   gem 'github-markup', :require => false
-  gem 'mina', :require => false
+  gem 'mina', :require => false, :github => 'nadarei/mina'
   gem 'pry-rails'
   gem 'seedbank'
 end
