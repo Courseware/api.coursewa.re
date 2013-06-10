@@ -16,6 +16,7 @@ group :production do
   gem 'pg'
   gem 'puma'
   gem 'party_foul'
+  gem 'rack-cors', :require => 'rack/cors'
 end
 
 group :development do
