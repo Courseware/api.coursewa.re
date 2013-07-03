@@ -73,6 +73,7 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    invoke :'docs:api'
     # Migrations should be handled by non-API app
     # invoke :'rails:db_migrate'
     # We have no assets, so do not try to compile any
