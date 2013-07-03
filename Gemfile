@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
 gem 'rails-api'
 gem 'active_model_serializers'
@@ -27,7 +27,7 @@ group :development do
   gem 'github-markup', :require => false
   gem 'mina', :require => false, :github => 'nadarei/mina'
   gem 'pry-rails'
-  gem 'seedbank'
+  gem 'seedbank', '0.3.0.pre'
 end
 
 group :development, :test do
