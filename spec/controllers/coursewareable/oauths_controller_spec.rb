@@ -2,11 +2,7 @@ require 'spec_helper'
 
 # Stolen from sorcery spec files
 def stub_all_oauth2_requests!
-  auth_code       = OAuth2::Strategy::AuthCode.any_instance
-  access_token    = mock(OAuth2::AccessToken)
-  access_token.stub(:token_param=)
-  response        = mock(OAuth2::Response)
-  response.stub(:body).and_return({
+  resp_hash = {
     'id'         => rand(1000),
     'name'       => Faker::Name.name,
     'first_name' => Faker::Name.first_name,
@@ -14,12 +10,21 @@ def stub_all_oauth2_requests!
     'link'       => Faker::Internet.http_url,
     'bio'        => Faker::Lorem.sentence,
     'email'      => Faker::Internet.email
-  }.to_json)
-  access_token.stub(:get).and_return(response)
-  auth_code.stub(:get_token).and_return(access_token)
+  }.to_json
+
+  response = double(OAuth2::Response, :body => resp_hash)
+
+  access_token = double(
+    OAuth2::AccessToken, :token_param= => true, :get => response)
+
+  OAuth2::Strategy::AuthCode.any_instance.stub(
+    :get_token).and_return(access_token)
 end
 
 describe Coursewareable::OauthsController do
+
+  routes { Coursewareable::Engine.routes }
+
   describe 'external call of' do
     before(:each) do
       stub_all_oauth2_requests!
@@ -97,6 +102,7 @@ describe Coursewareable::OauthsController do
       let(:existing_token) { '' }
 
       before do
+        @controller.stub(:form_authenticity_token => true)
         post(:authenticate, :email => user.email, :password => 'secret',
              :client_id => oauth_app.uid, :access_token => existing_token)
       end

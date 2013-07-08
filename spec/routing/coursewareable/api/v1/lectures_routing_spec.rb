@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::LecturesController do
+
+  routes { Coursewareable::Engine.routes }
+
   describe 'routing' do
 
     it 'routes to #index' do

@@ -31,7 +31,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.12.0'
+  gem 'rspec-rails'
   gem 'ffaker'
   gem 'fabrication'
   gem 'guard-rspec'

@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::SyllabusesController do
+
+  routes { Coursewareable::Engine.routes }
+
   let(:syllabus) { Fabricate('coursewareable/syllabus') }
   let(:token) do
-    stub :accessible? => true, :resource_owner_id => syllabus.classroom.owner.id
+    double :accessible? => true, :resource_owner_id => syllabus.classroom.owner.id
   end
 
   before do
@@ -25,7 +28,7 @@ describe Coursewareable::Api::V1::SyllabusesController do
     end
 
     context 'not authenticated' do
-      let(:token) { stub(:accessible? => false) }
+      let(:token) { double(:accessible? => false) }
 
       its(:status) { should eq(401) }
     end

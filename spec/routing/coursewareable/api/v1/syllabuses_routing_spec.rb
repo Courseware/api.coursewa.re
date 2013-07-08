@@ -1,6 +1,9 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Coursewareable::Api::V1::SyllabusesController do
+
+  routes { Coursewareable::Engine.routes }
+
   describe "routing" do
     it "routes to #show" do
       get("/v1/syllabus").should(

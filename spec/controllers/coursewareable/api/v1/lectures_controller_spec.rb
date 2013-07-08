@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::LecturesController do
+
+  routes { Coursewareable::Engine.routes }
+
   let(:lecture) { Fabricate('coursewareable/lecture') }
   let(:token) do
-    stub(:accessible? => true, :resource_owner_id => lecture.user.id)
+    double(:accessible? => true, :resource_owner_id => lecture.user.id)
   end
 
   before do
@@ -25,7 +28,7 @@ describe Coursewareable::Api::V1::LecturesController do
     end
 
     context 'not authenticated' do
-      let(:token) { stub(:accessible? => false) }
+      let(:token) { double(:accessible? => false) }
 
       its(:status) { should eq(401) }
     end
@@ -56,7 +59,7 @@ describe Coursewareable::Api::V1::LecturesController do
     end
 
     context 'not authenticated' do
-      let(:token) { stub(:accessible? => false) }
+      let(:token) { double(:accessible? => false) }
 
       its(:status) { should eq(401) }
     end

@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::ResponsesController do
+
+  routes { Coursewareable::Engine.routes }
+
   describe 'routing' do
     it '#show' do
       get('/v1/response').should(

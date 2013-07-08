@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::UsersController do
+
+  routes { Coursewareable::Engine.routes }
+
   let(:user) { Fabricate(:confirmed_user) }
-  let(:token) { stub(:accessible? => true, :resource_owner_id => user.id) }
+  let(:token) { double(:accessible? => true, :resource_owner_id => user.id) }
 
   before do
     controller.stub(:doorkeeper_token) { token }
@@ -26,7 +29,7 @@ describe Coursewareable::Api::V1::UsersController do
     end
 
     context 'not authenticated' do
-      let(:token) { stub(:accessible? => false) }
+      let(:token) { double(:accessible? => false) }
 
       its(:status) { should eq(401) }
     end

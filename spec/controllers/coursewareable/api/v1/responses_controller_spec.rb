@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::ResponsesController do
+
+  routes { Coursewareable::Engine.routes }
+
   let(:assignment) { Fabricate(:assignment_with_quiz) }
   let(:resp) { Fabricate('coursewareable/response', :assignment => assignment) }
   let(:token) do
-    stub(:accessible? => true, :resource_owner_id => resp.user.id)
+    double(:accessible? => true, :resource_owner_id => resp.user.id)
   end
 
   before { controller.stub(:doorkeeper_token) { token } }
@@ -25,7 +28,7 @@ describe Coursewareable::Api::V1::ResponsesController do
     end
 
     context 'not authenticated' do
-      let(:token) { stub(:accessible? => false) }
+      let(:token) { double(:accessible? => false) }
 
       its(:status) { should eq(401) }
     end

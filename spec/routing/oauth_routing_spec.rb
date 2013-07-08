@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe 'OAuth' do
-  before { @routes = CoursewareAPI::Application.routes }
+
+  routes { CoursewareAPI::Application.routes }
 
   describe 'routing' do
     it 'for authorization creation' do

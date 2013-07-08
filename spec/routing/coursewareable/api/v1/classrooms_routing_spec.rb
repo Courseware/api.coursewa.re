@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Coursewareable::Api::V1::ClassroomsController do
+
+  routes { Coursewareable::Engine.routes }
+
   describe 'routing' do
     it 'for index' do
       get('/v1/classrooms').should(
