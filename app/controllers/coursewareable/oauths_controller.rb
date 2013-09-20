@@ -1,5 +1,7 @@
 # OAuth controller to handle external authentications
 class Coursewareable::OauthsController < ::ApplicationController
+  include ActionController::RequestForgeryProtection
+
   # Using user credentials and OAuth app key
   # we authenticate the user and generate a token if none exists
   def authenticate
