@@ -6,6 +6,8 @@ existing Coursewa.re instance.
 
 The API responds just JSON.
 
+[![Build Status](https://travis-ci.org/Courseware/api.coursewa.re.png?branch=master)](https://travis-ci.org/Courseware/api.coursewa.re)
+
 # Installation
 
 1. Close the repository
