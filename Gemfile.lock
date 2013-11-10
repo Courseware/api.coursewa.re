@@ -1,14 +1,6 @@
 GIT
-  remote: git://github.com/nadarei/mina.git
-  revision: cfc624a2885e2830f86749eae21e63668c8bf043
-  specs:
-    mina (0.2.1)
-      open4
-      rake
-
-GIT
-  remote: https://5a46b48f3664e53f78b41d5cdbfe3b31a2d82b4d:x-oauth-basic@github.com/stas/coursewareable.git
-  revision: 5356ce6cbfd8f9c6aad4095a2aee8035e6aeedd7
+  remote: git://github.com/Courseware/coursewareable.git
+  revision: 1238cf8f0c391ebd485c8f1cf8008a533f5f2d9d
   specs:
     coursewareable (0.0.1)
       cancan
@@ -17,6 +9,14 @@ GIT
       public_activity
       sanitize
       sorcery (>= 0.8)
+
+GIT
+  remote: git://github.com/nadarei/mina.git
+  revision: cfc624a2885e2830f86749eae21e63668c8bf043
+  specs:
+    mina (0.2.1)
+      open4
+      rake
 
 GEM
   remote: https://rubygems.org/
@@ -75,7 +75,8 @@ GEM
     ffaker (1.16.2)
     ffi (1.9.0)
     formatador (0.2.4)
-    friendly_id (4.0.9)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
     github-markup (0.7.5)
     github_api (0.10.2)
       addressable
@@ -193,15 +194,15 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    sanitize (2.0.4)
-      nokogiri (~> 1.6.0)
+    sanitize (2.0.6)
+      nokogiri (>= 1.4.4)
     seedbank (0.3.0.pre)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.5)
-    sorcery (0.8.2)
+    sorcery (0.8.3)
       bcrypt-ruby (~> 3.0.0)
       oauth (~> 0.4.4)
       oauth2 (~> 0.8.0)

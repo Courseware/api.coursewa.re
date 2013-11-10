@@ -65,9 +65,6 @@ CoursewareAPI::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Enable Party Foul exceptions notifier
-  config.middleware.use('PartyFoul::Middleware')
-
   # Enable Rack::Cors
   config.middleware.use Rack::Cors do
     allow do

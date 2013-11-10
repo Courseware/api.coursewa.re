@@ -7,6 +7,6 @@ module CoursewareAPI
 end
 
 CoursewareAPI.config = Coursewareable.config
-CoursewareAPI.config.domain_name = 'api.coursewa.re'
-CoursewareAPI.config.default_email_address = 'no-reply@coursewa.re'
-CoursewareAPI.config.support_email_address = 'help@coursewa.re'
+CoursewareAPI.config.domain_name = 'api.open.coursewa.re'
+CoursewareAPI.config.default_email_address = 'no-reply@open.coursewa.re'
+CoursewareAPI.config.support_email_address = 'help@open.coursewa.re'
